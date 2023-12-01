@@ -7,12 +7,10 @@ use Illuminate\Http\Request;
 
 class OrdersController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+   
     public function index()
     {
-        //
+        return view('order.index');
     }
 
     /**
@@ -20,7 +18,7 @@ class OrdersController extends Controller
      */
     public function create()
     {
-        //
+        return view('order.create');
     }
 
     /**
@@ -28,7 +26,8 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Orders::create($request->all());
+        return redirect()->route('order.index');
     }
 
     /**
@@ -36,7 +35,8 @@ class OrdersController extends Controller
      */
     public function show(Orders $orders)
     {
-        //
+        $order = Orders::findOrFail($orders->id);
+        return view('order.single', compact('order'));
     }
 
     /**
@@ -44,7 +44,8 @@ class OrdersController extends Controller
      */
     public function edit(Orders $orders)
     {
-        //
+        $order = Orders::findOrFail($orders->id);
+        return view('order.edit', compact('order'));
     }
 
     /**
@@ -52,7 +53,9 @@ class OrdersController extends Controller
      */
     public function update(Request $request, Orders $orders)
     {
-        //
+        $orders = Orders::findOrFail($orders->id);
+        $orders->update($request->all()); 
+        return redirect()->route('orders.index');
     }
 
     /**
@@ -60,6 +63,8 @@ class OrdersController extends Controller
      */
     public function destroy(Orders $orders)
     {
-        //
+        $orders = Orders::findOrFail($orders->id);
+        $orders->delete(); 
+        return redirect()->route('orders.index');
     }
 }
