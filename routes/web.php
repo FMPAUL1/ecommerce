@@ -1,9 +1,10 @@
 <?php
 
-
+use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-
+use App\Models\Orders;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +22,5 @@ Route::get('/', function () {
 });
 
 Route::resource('user',UserController::class);
+Route::resource('order',OrdersController::class);
+Route::resource('product',ProductController::class);

@@ -7,17 +7,17 @@
         <thead>
 
             <tr>
-    <th></th>
-    <th></th>
+    <th>NAME</th>
+    <th>EMAIL</th>
     <th></th>
             </tr>
         </thead>
         <tbody>
             @foreach ($users as $user )
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{{$user->name}}</td>
+                <td>{{$user->email}}</td>
+                
 
             </tr>
             @endforeach
